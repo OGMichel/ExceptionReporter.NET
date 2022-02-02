@@ -1,4 +1,4 @@
-﻿/* MIT License
+/* MIT License
 
 Copyright (c) 2016 JetBrains http://www.jetbrains.com
 
@@ -23,7 +23,6 @@ SOFTWARE. */
 using System;
 // ReSharper disable InheritdocConsiderUsage
 
-#pragma warning disable 1591
 // ReSharper disable UnusedMember.Global
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -46,9 +45,9 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-    AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
-    AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+	AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+	AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+	AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
   public sealed class CanBeNullAttribute : Attribute { }
 
   /// <summary>
@@ -60,9 +59,9 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-    AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
-    AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+	AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+	AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+	AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
   public sealed class NotNullAttribute : Attribute { }
 
   /// <summary>
@@ -80,8 +79,8 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-    AttributeTargets.Delegate | AttributeTargets.Field)]
+	AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+	AttributeTargets.Delegate | AttributeTargets.Field)]
   public sealed class ItemNotNullAttribute : Attribute { }
 
   /// <summary>
@@ -100,8 +99,8 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-    AttributeTargets.Delegate | AttributeTargets.Field)]
+	AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+	AttributeTargets.Delegate | AttributeTargets.Field)]
   public sealed class ItemCanBeNullAttribute : Attribute { }
 
   /// <summary>
@@ -118,19 +117,19 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Constructor | AttributeTargets.Method |
-    AttributeTargets.Property | AttributeTargets.Delegate)]
+	AttributeTargets.Constructor | AttributeTargets.Method |
+	AttributeTargets.Property | AttributeTargets.Delegate)]
   public sealed class StringFormatMethodAttribute : Attribute
   {
-    /// <param name="formatParameterName">
-    /// Specifies which parameter of an annotated method should be treated as the format string
-    /// </param>
-    public StringFormatMethodAttribute([NotNull] string formatParameterName)
-    {
-      FormatParameterName = formatParameterName;
-    }
+	/// <param name="formatParameterName">
+	/// Specifies which parameter of an annotated method should be treated as the format string
+	/// </param>
+	public StringFormatMethodAttribute([NotNull] string formatParameterName)
+	{
+	  FormatParameterName = formatParameterName;
+	}
 
-    [NotNull] public string FormatParameterName { get; }
+	[NotNull] public string FormatParameterName { get; }
   }
 
   /// <summary>
@@ -161,16 +160,16 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field,
-    AllowMultiple = true)]
+	AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field,
+	AllowMultiple = true)]
   public sealed class ValueProviderAttribute : Attribute
   {
-    public ValueProviderAttribute([NotNull] string name)
-    {
-      Name = name;
-    }
+	public ValueProviderAttribute([NotNull] string name)
+	{
+	  Name = name;
+	}
 
-    [NotNull] public string Name { get; }
+	[NotNull] public string Name { get; }
   }
 
   /// <summary>
@@ -186,35 +185,35 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property |
-    AttributeTargets.Method | AttributeTargets.Delegate,
-    AllowMultiple = true)]
+	AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property |
+	AttributeTargets.Method | AttributeTargets.Delegate,
+	AllowMultiple = true)]
   public sealed class ValueRangeAttribute : Attribute
   {
-    public object From { get; }
-    public object To { get; }
+	public object From { get; }
+	public object To { get; }
 
-    public ValueRangeAttribute(long from, long to)
-    {
-      From = from;
-      To = to;
-    }
+	public ValueRangeAttribute(long from, long to)
+	{
+	  From = from;
+	  To = to;
+	}
 
-    public ValueRangeAttribute(ulong from, ulong to)
-    {
-      From = from;
-      To = to;
-    }
+	public ValueRangeAttribute(ulong from, ulong to)
+	{
+	  From = from;
+	  To = to;
+	}
 
-    public ValueRangeAttribute(long value)
-    {
-      From = To = value;
-    }
+	public ValueRangeAttribute(long value)
+	{
+	  From = To = value;
+	}
 
-    public ValueRangeAttribute(ulong value)
-    {
-      From = To = value;
-    }
+	public ValueRangeAttribute(ulong value)
+	{
+	  From = To = value;
+	}
   }
 
   /// <summary>
@@ -228,8 +227,8 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property |
-    AttributeTargets.Method | AttributeTargets.Delegate)]
+	AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property |
+	AttributeTargets.Method | AttributeTargets.Delegate)]
   public sealed class NonNegativeValueAttribute : Attribute { }
 
   /// <summary>
@@ -287,13 +286,13 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Method)]
   public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
   {
-    public NotifyPropertyChangedInvocatorAttribute() { }
-    public NotifyPropertyChangedInvocatorAttribute([NotNull] string parameterName)
-    {
-      ParameterName = parameterName;
-    }
+	public NotifyPropertyChangedInvocatorAttribute() { }
+	public NotifyPropertyChangedInvocatorAttribute([NotNull] string parameterName)
+	{
+	  ParameterName = parameterName;
+	}
 
-    [CanBeNull] public string ParameterName { get; }
+	[CanBeNull] public string ParameterName { get; }
   }
 
   /// <summary>
@@ -343,18 +342,18 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
   public sealed class ContractAnnotationAttribute : Attribute
   {
-    public ContractAnnotationAttribute([NotNull] string contract)
-      : this(contract, false) { }
+	public ContractAnnotationAttribute([NotNull] string contract)
+	  : this(contract, false) { }
 
-    public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
-    {
-      Contract = contract;
-      ForceFullStates = forceFullStates;
-    }
+	public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
+	{
+	  Contract = contract;
+	  ForceFullStates = forceFullStates;
+	}
 
-    [NotNull] public string Contract { get; }
+	[NotNull] public string Contract { get; }
 
-    public bool ForceFullStates { get; }
+	public bool ForceFullStates { get; }
   }
 
   /// <summary>
@@ -369,14 +368,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.All)]
   public sealed class LocalizationRequiredAttribute : Attribute
   {
-    public LocalizationRequiredAttribute() : this(true) { }
+	public LocalizationRequiredAttribute() : this(true) { }
 
-    public LocalizationRequiredAttribute(bool required)
-    {
-      Required = required;
-    }
+	public LocalizationRequiredAttribute(bool required)
+	{
+	  Required = required;
+	}
 
-    public bool Required { get; }
+	public bool Required { get; }
   }
 
   /// <summary>
@@ -417,12 +416,12 @@ namespace ExceptionReporting.Annotations
   [BaseTypeRequired(typeof(Attribute))]
   public sealed class BaseTypeRequiredAttribute : Attribute
   {
-    public BaseTypeRequiredAttribute([NotNull] Type baseType)
-    {
-      BaseType = baseType;
-    }
+	public BaseTypeRequiredAttribute([NotNull] Type baseType)
+	{
+	  BaseType = baseType;
+	}
 
-    [NotNull] public Type BaseType { get; }
+	[NotNull] public Type BaseType { get; }
   }
 
   /// <summary>
@@ -432,24 +431,24 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.All)]
   public sealed class UsedImplicitlyAttribute : Attribute
   {
-    public UsedImplicitlyAttribute()
-      : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
+	public UsedImplicitlyAttribute()
+	  : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
 
-    public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags)
-      : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
+	public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags)
+	  : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
 
-    public UsedImplicitlyAttribute(ImplicitUseTargetFlags targetFlags)
-      : this(ImplicitUseKindFlags.Default, targetFlags) { }
+	public UsedImplicitlyAttribute(ImplicitUseTargetFlags targetFlags)
+	  : this(ImplicitUseKindFlags.Default, targetFlags) { }
 
-    public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
-    {
-      UseKindFlags = useKindFlags;
-      TargetFlags = targetFlags;
-    }
+	public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
+	{
+	  UseKindFlags = useKindFlags;
+	  TargetFlags = targetFlags;
+	}
 
-    public ImplicitUseKindFlags UseKindFlags { get; }
+	public ImplicitUseKindFlags UseKindFlags { get; }
 
-    public ImplicitUseTargetFlags TargetFlags { get; }
+	public ImplicitUseTargetFlags TargetFlags { get; }
   }
 
   /// <summary>
@@ -461,24 +460,24 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Class | AttributeTargets.GenericParameter | AttributeTargets.Parameter)]
   public sealed class MeansImplicitUseAttribute : Attribute
   {
-    public MeansImplicitUseAttribute()
-      : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
+	public MeansImplicitUseAttribute()
+	  : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
 
-    public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags)
-      : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
+	public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags)
+	  : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
 
-    public MeansImplicitUseAttribute(ImplicitUseTargetFlags targetFlags)
-      : this(ImplicitUseKindFlags.Default, targetFlags) { }
+	public MeansImplicitUseAttribute(ImplicitUseTargetFlags targetFlags)
+	  : this(ImplicitUseKindFlags.Default, targetFlags) { }
 
-    public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
-    {
-      UseKindFlags = useKindFlags;
-      TargetFlags = targetFlags;
-    }
+	public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
+	{
+	  UseKindFlags = useKindFlags;
+	  TargetFlags = targetFlags;
+	}
 
-    [UsedImplicitly] public ImplicitUseKindFlags UseKindFlags { get; }
+	[UsedImplicitly] public ImplicitUseKindFlags UseKindFlags { get; }
 
-    [UsedImplicitly] public ImplicitUseTargetFlags TargetFlags { get; }
+	[UsedImplicitly] public ImplicitUseTargetFlags TargetFlags { get; }
   }
 
   /// <summary>
@@ -488,18 +487,18 @@ namespace ExceptionReporting.Annotations
   [Flags]
   public enum ImplicitUseKindFlags
   {
-    Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
-    /// <summary>Only entity marked with attribute considered used.</summary>
-    Access = 1,
-    /// <summary>Indicates implicit assignment to a member.</summary>
-    Assign = 2,
-    /// <summary>
-    /// Indicates implicit instantiation of a type with fixed constructor signature.
-    /// That means any unused constructor parameters won't be reported as such.
-    /// </summary>
-    InstantiatedWithFixedConstructorSignature = 4,
-    /// <summary>Indicates implicit instantiation of a type.</summary>
-    InstantiatedNoFixedConstructorSignature = 8,
+	Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
+	/// <summary>Only entity marked with attribute considered used.</summary>
+	Access = 1,
+	/// <summary>Indicates implicit assignment to a member.</summary>
+	Assign = 2,
+	/// <summary>
+	/// Indicates implicit instantiation of a type with fixed constructor signature.
+	/// That means any unused constructor parameters won't be reported as such.
+	/// </summary>
+	InstantiatedWithFixedConstructorSignature = 4,
+	/// <summary>Indicates implicit instantiation of a type.</summary>
+	InstantiatedNoFixedConstructorSignature = 8,
   }
 
   /// <summary>
@@ -509,14 +508,14 @@ namespace ExceptionReporting.Annotations
   [Flags]
   public enum ImplicitUseTargetFlags
   {
-    Default = Itself,
-    Itself = 1,
-    /// <summary>Members of entity marked with attribute are considered used.</summary>
-    Members = 2,
-    /// <summary> Inherited entities are considered used. </summary>
-    WithInheritors = 4,
-    /// <summary>Entity marked with attribute and all its members considered used.</summary>
-    WithMembers = Itself | Members
+	Default = Itself,
+	Itself = 1,
+	/// <summary>Members of entity marked with attribute are considered used.</summary>
+	Members = 2,
+	/// <summary> Inherited entities are considered used. </summary>
+	WithInheritors = 4,
+	/// <summary>Entity marked with attribute and all its members considered used.</summary>
+	WithMembers = Itself | Members
   }
 
   /// <summary>
@@ -527,14 +526,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.All, Inherited = false)]
   public sealed class PublicAPIAttribute : Attribute
   {
-    public PublicAPIAttribute() { }
+	public PublicAPIAttribute() { }
 
-    public PublicAPIAttribute([NotNull] string comment)
-    {
-      Comment = comment;
-    }
+	public PublicAPIAttribute([NotNull] string comment)
+	{
+	  Comment = comment;
+	}
 
-    [CanBeNull] public string Comment { get; }
+	[CanBeNull] public string Comment { get; }
   }
 
   /// <summary>
@@ -573,14 +572,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Method)]
   public sealed class MustUseReturnValueAttribute : Attribute
   {
-    public MustUseReturnValueAttribute() { }
+	public MustUseReturnValueAttribute() { }
 
-    public MustUseReturnValueAttribute([NotNull] string justification)
-    {
-      Justification = justification;
-    }
+	public MustUseReturnValueAttribute([NotNull] string justification)
+	{
+	  Justification = justification;
+	}
 
-    [CanBeNull] public string Justification { get; }
+	[CanBeNull] public string Justification { get; }
   }
 
   /// <summary>
@@ -599,8 +598,8 @@ namespace ExceptionReporting.Annotations
   /// }
   /// </code></example>
   [AttributeUsage(
-    AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method |
-    AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.GenericParameter)]
+	AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method |
+	AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.GenericParameter)]
   public sealed class ProvidesContextAttribute : Attribute { }
 
   /// <summary>
@@ -610,14 +609,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter)]
   public sealed class PathReferenceAttribute : Attribute
   {
-    public PathReferenceAttribute() { }
+	public PathReferenceAttribute() { }
 
-    public PathReferenceAttribute([NotNull, PathReference] string basePath)
-    {
-      BasePath = basePath;
-    }
+	public PathReferenceAttribute([NotNull, PathReference] string basePath)
+	{
+	  BasePath = basePath;
+	}
 
-    [CanBeNull] public string BasePath { get; }
+	[CanBeNull] public string BasePath { get; }
   }
 
   /// <summary>
@@ -677,93 +676,93 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = true)]
   public sealed class MacroAttribute : Attribute
   {
-    /// <summary>
-    /// Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
-    /// parameter when the template is expanded.
-    /// </summary>
-    [CanBeNull] public string Expression { get; set; }
+	/// <summary>
+	/// Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
+	/// parameter when the template is expanded.
+	/// </summary>
+	[CanBeNull] public string Expression { get; set; }
 
-    /// <summary>
-    /// Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
-    /// </summary>
-    /// <remarks>
-    /// If the target parameter is used several times in the template, only one occurrence becomes editable;
-    /// other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
-    /// use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
-    /// </remarks>
-    public int Editable { get; set; }
+	/// <summary>
+	/// Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
+	/// </summary>
+	/// <remarks>
+	/// If the target parameter is used several times in the template, only one occurrence becomes editable;
+	/// other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
+	/// use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
+	/// </remarks>
+	public int Editable { get; set; }
 
-    /// <summary>
-    /// Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
-    /// <see cref="MacroAttribute"/> is applied on a template method.
-    /// </summary>
-    [CanBeNull] public string Target { get; set; }
+	/// <summary>
+	/// Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
+	/// <see cref="MacroAttribute"/> is applied on a template method.
+	/// </summary>
+	[CanBeNull] public string Target { get; set; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
   {
-    public AspMvcAreaMasterLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcAreaMasterLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
   {
-    public AspMvcAreaPartialViewLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcAreaPartialViewLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
   {
-    public AspMvcAreaViewLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcAreaViewLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcMasterLocationFormatAttribute : Attribute
   {
-    public AspMvcMasterLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcMasterLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
   {
-    public AspMvcPartialViewLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcPartialViewLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
   public sealed class AspMvcViewLocationFormatAttribute : Attribute
   {
-    public AspMvcViewLocationFormatAttribute([NotNull] string format)
-    {
-      Format = format;
-    }
+	public AspMvcViewLocationFormatAttribute([NotNull] string format)
+	{
+	  Format = format;
+	}
 
-    [NotNull] public string Format { get; }
+	[NotNull] public string Format { get; }
   }
 
   /// <summary>
@@ -775,14 +774,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property)]
   public sealed class AspMvcActionAttribute : Attribute
   {
-    public AspMvcActionAttribute() { }
+	public AspMvcActionAttribute() { }
 
-    public AspMvcActionAttribute([NotNull] string anonymousProperty)
-    {
-      AnonymousProperty = anonymousProperty;
-    }
+	public AspMvcActionAttribute([NotNull] string anonymousProperty)
+	{
+	  AnonymousProperty = anonymousProperty;
+	}
 
-    [CanBeNull] public string AnonymousProperty { get; }
+	[CanBeNull] public string AnonymousProperty { get; }
   }
 
   /// <summary>
@@ -793,14 +792,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
   public sealed class AspMvcAreaAttribute : Attribute
   {
-    public AspMvcAreaAttribute() { }
+	public AspMvcAreaAttribute() { }
 
-    public AspMvcAreaAttribute([NotNull] string anonymousProperty)
-    {
-      AnonymousProperty = anonymousProperty;
-    }
+	public AspMvcAreaAttribute([NotNull] string anonymousProperty)
+	{
+	  AnonymousProperty = anonymousProperty;
+	}
 
-    [CanBeNull] public string AnonymousProperty { get; }
+	[CanBeNull] public string AnonymousProperty { get; }
   }
 
   /// <summary>
@@ -812,14 +811,14 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property)]
   public sealed class AspMvcControllerAttribute : Attribute
   {
-    public AspMvcControllerAttribute() { }
+	public AspMvcControllerAttribute() { }
 
-    public AspMvcControllerAttribute([NotNull] string anonymousProperty)
-    {
-      AnonymousProperty = anonymousProperty;
-    }
+	public AspMvcControllerAttribute([NotNull] string anonymousProperty)
+	{
+	  AnonymousProperty = anonymousProperty;
+	}
 
-    [CanBeNull] public string AnonymousProperty { get; }
+	[CanBeNull] public string AnonymousProperty { get; }
   }
 
   /// <summary>
@@ -915,25 +914,25 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
   public sealed class HtmlElementAttributesAttribute : Attribute
   {
-    public HtmlElementAttributesAttribute() { }
+	public HtmlElementAttributesAttribute() { }
 
-    public HtmlElementAttributesAttribute([NotNull] string name)
-    {
-      Name = name;
-    }
+	public HtmlElementAttributesAttribute([NotNull] string name)
+	{
+	  Name = name;
+	}
 
-    [CanBeNull] public string Name { get; }
+	[CanBeNull] public string Name { get; }
   }
 
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
   public sealed class HtmlAttributeValueAttribute : Attribute
   {
-    public HtmlAttributeValueAttribute([NotNull] string name)
-    {
-      Name = name;
-    }
+	public HtmlAttributeValueAttribute([NotNull] string name)
+	{
+	  Name = name;
+	}
 
-    [NotNull] public string Name { get; }
+	[NotNull] public string Name { get; }
   }
 
   /// <summary>
@@ -974,12 +973,12 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
   public sealed class CollectionAccessAttribute : Attribute
   {
-    public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
-    {
-      CollectionAccessType = collectionAccessType;
-    }
+	public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
+	{
+	  CollectionAccessType = collectionAccessType;
+	}
 
-    public CollectionAccessType CollectionAccessType { get; }
+	public CollectionAccessType CollectionAccessType { get; }
   }
 
   /// <summary>
@@ -989,14 +988,14 @@ namespace ExceptionReporting.Annotations
   [Flags]
   public enum CollectionAccessType
   {
-    /// <summary>Method does not use or modify content of the collection.</summary>
-    None = 0,
-    /// <summary>Method only reads content of the collection but does not modify it.</summary>
-    Read = 1,
-    /// <summary>Method can change content of the collection but does not add new elements.</summary>
-    ModifyExistingContent = 2,
-    /// <summary>Method can add new elements to the collection.</summary>
-    UpdatedContent = ModifyExistingContent | 4
+	/// <summary>Method does not use or modify content of the collection.</summary>
+	None = 0,
+	/// <summary>Method only reads content of the collection but does not modify it.</summary>
+	Read = 1,
+	/// <summary>Method can change content of the collection but does not add new elements.</summary>
+	ModifyExistingContent = 2,
+	/// <summary>Method can add new elements to the collection.</summary>
+	UpdatedContent = ModifyExistingContent | 4
   }
 
   /// <summary>
@@ -1015,12 +1014,12 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Parameter)]
   public sealed class AssertionConditionAttribute : Attribute
   {
-    public AssertionConditionAttribute(AssertionConditionType conditionType)
-    {
-      ConditionType = conditionType;
-    }
+	public AssertionConditionAttribute(AssertionConditionType conditionType)
+	{
+	  ConditionType = conditionType;
+	}
 
-    public AssertionConditionType ConditionType { get; }
+	public AssertionConditionType ConditionType { get; }
   }
 
   /// <summary>
@@ -1029,14 +1028,14 @@ namespace ExceptionReporting.Annotations
   /// </summary>
   public enum AssertionConditionType
   {
-    /// <summary>Marked parameter should be evaluated to true.</summary>
-    IS_TRUE = 0,
-    /// <summary>Marked parameter should be evaluated to false.</summary>
-    IS_FALSE = 1,
-    /// <summary>Marked parameter should be evaluated to null value.</summary>
-    IS_NULL = 2,
-    /// <summary>Marked parameter should be evaluated to not null value.</summary>
-    IS_NOT_NULL = 3,
+	/// <summary>Marked parameter should be evaluated to true.</summary>
+	IS_TRUE = 0,
+	/// <summary>Marked parameter should be evaluated to false.</summary>
+	IS_FALSE = 1,
+	/// <summary>Marked parameter should be evaluated to null value.</summary>
+	IS_NULL = 2,
+	/// <summary>Marked parameter should be evaluated to not null value.</summary>
+	IS_NOT_NULL = 3,
   }
 
   /// <summary>
@@ -1087,7 +1086,7 @@ namespace ExceptionReporting.Annotations
   /// The attribute must be mentioned in your member reordering patterns.
   /// </remarks>
   [AttributeUsage(
-    AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.Enum)]
+	AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.Enum)]
   public sealed class NoReorderAttribute : Attribute { }
 
   /// <summary>
@@ -1124,15 +1123,15 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
   public sealed class AspChildControlTypeAttribute : Attribute
   {
-    public AspChildControlTypeAttribute([NotNull] string tagName, [NotNull] Type controlType)
-    {
-      TagName = tagName;
-      ControlType = controlType;
-    }
+	public AspChildControlTypeAttribute([NotNull] string tagName, [NotNull] Type controlType)
+	{
+	  TagName = tagName;
+	  ControlType = controlType;
+	}
 
-    [NotNull] public string TagName { get; }
+	[NotNull] public string TagName { get; }
 
-    [NotNull] public Type ControlType { get; }
+	[NotNull] public Type ControlType { get; }
   }
 
   [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
@@ -1147,76 +1146,76 @@ namespace ExceptionReporting.Annotations
   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
   public sealed class AspRequiredAttributeAttribute : Attribute
   {
-    public AspRequiredAttributeAttribute([NotNull] string attribute)
-    {
-      Attribute = attribute;
-    }
+	public AspRequiredAttributeAttribute([NotNull] string attribute)
+	{
+	  Attribute = attribute;
+	}
 
-    [NotNull] public string Attribute { get; }
+	[NotNull] public string Attribute { get; }
   }
 
   [AttributeUsage(AttributeTargets.Property)]
   public sealed class AspTypePropertyAttribute : Attribute
   {
-    public bool CreateConstructorReferences { get; }
+	public bool CreateConstructorReferences { get; }
 
-    public AspTypePropertyAttribute(bool createConstructorReferences)
-    {
-      CreateConstructorReferences = createConstructorReferences;
-    }
+	public AspTypePropertyAttribute(bool createConstructorReferences)
+	{
+	  CreateConstructorReferences = createConstructorReferences;
+	}
   }
 
   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
   public sealed class RazorImportNamespaceAttribute : Attribute
   {
-    public RazorImportNamespaceAttribute([NotNull] string name)
-    {
-      Name = name;
-    }
+	public RazorImportNamespaceAttribute([NotNull] string name)
+	{
+	  Name = name;
+	}
 
-    [NotNull] public string Name { get; }
+	[NotNull] public string Name { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
   public sealed class RazorInjectionAttribute : Attribute
   {
-    public RazorInjectionAttribute([NotNull] string type, [NotNull] string fieldName)
-    {
-      Type = type;
-      FieldName = fieldName;
-    }
+	public RazorInjectionAttribute([NotNull] string type, [NotNull] string fieldName)
+	{
+	  Type = type;
+	  FieldName = fieldName;
+	}
 
-    [NotNull] public string Type { get; }
+	[NotNull] public string Type { get; }
 
-    [NotNull] public string FieldName { get; }
+	[NotNull] public string FieldName { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
   public sealed class RazorDirectiveAttribute : Attribute
   {
-    public RazorDirectiveAttribute([NotNull] string directive)
-    {
-      Directive = directive;
-    }
+	public RazorDirectiveAttribute([NotNull] string directive)
+	{
+	  Directive = directive;
+	}
 
-    [NotNull] public string Directive { get; }
+	[NotNull] public string Directive { get; }
   }
 
   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
   public sealed class RazorPageBaseTypeAttribute : Attribute
   {
-      public RazorPageBaseTypeAttribute([NotNull] string baseType)
-      {
-        BaseType = baseType;
-      }
-      public RazorPageBaseTypeAttribute([NotNull] string baseType, string pageName)
-      {
-          BaseType = baseType;
-          PageName = pageName;
-      }
+	public RazorPageBaseTypeAttribute([NotNull] string baseType)
+	{
+	  BaseType = baseType;
+	}
+	public RazorPageBaseTypeAttribute([NotNull] string baseType, string pageName)
+	{
+	  BaseType = baseType;
+	  PageName = pageName;
+	}
 
-      [NotNull] public string BaseType { get; }
-      [CanBeNull] public string PageName { get; }
+	[NotNull] public string BaseType { get; }
+	[CanBeNull] public string PageName { get; }
   }
 
   [AttributeUsage(AttributeTargets.Method)]

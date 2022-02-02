@@ -1,21 +1,21 @@
+using ExceptionReporting.WPF.MvvM.ViewModel;
 using System;
 using System.Windows.Controls;
-using ExceptionReporting.WPF.MvvM.ViewModel;
 
 // ReSharper disable CheckNamespace
 namespace ExceptionReporting.WPF.MvvM.View
 {
-	/// <summary>
-	/// Interaction logic for WpfExceptionReporter
-	/// </summary>
-	public partial class WpfExceptionReporter : UserControl
+  /// <summary>
+  /// Interaction logic for WpfExceptionReporter
+  /// </summary>
+  public partial class WpfExceptionReporter : UserControl
+  {
+	public WpfExceptionReporter(Exception exception, ExceptionReportInfo info)
 	{
-		public WpfExceptionReporter(Exception exception, ExceptionReportInfo info)
-		{
-			InitializeComponent();
+	  InitializeComponent();
 
-			info.MainException = exception;
-			this.DataContext = new ExceptionReporterViewModel(info);
-		}
+	  info.MainException = exception;
+	  this.DataContext = new ExceptionReporterViewModel(info);
 	}
+  }
 }

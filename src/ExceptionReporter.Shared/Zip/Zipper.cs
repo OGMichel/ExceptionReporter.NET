@@ -1,22 +1,20 @@
-using System.Collections.Generic;
-using Ionic.Zip;
+using System.IO.Compression;
 
 namespace ExceptionReporting.Zip
 {
-	internal interface IZipper 
-	{
-		void Zip(string zipFile, IEnumerable<string> files);
-	}
+  public interface IZipper
+  {
+	void Zip(string zipFile, IEnumerable<string> files);
+  }
 
-	internal class Zipper : IZipper
+  internal class Zipper : IZipper
+  {
+	public void Zip(string zipFile, IEnumerable<string> files)
 	{
-		public void Zip(string zipFile, IEnumerable<string> files)
-		{
-			using (var zip = new ZipFile(zipFile))
-			{
-				zip.AddFiles(files, directoryPathInArchive: "");
-				zip.Save();
-			}
-		}
+	  Stream fileStream = new FileStream(zipFile, FileMode.Create);
+	  ZipArchive archive = new(fileStream);
+	  foreach (string file in files)
+		archive.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
 	}
+  }
 }

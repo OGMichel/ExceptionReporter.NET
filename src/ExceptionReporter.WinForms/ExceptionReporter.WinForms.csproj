@@ -1,24 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-		<RootNamespace>ExceptionReporting</RootNamespace>
-		<AssemblyName>ExceptionReporter.NET</AssemblyName>
-		<PackageId>ExceptionReporter</PackageId>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<TargetFrameworks>net40</TargetFrameworks>
-		<ReleaseVersion>5.0</ReleaseVersion>
-		<PackageLicenseUrl></PackageLicenseUrl>
+    <RootNamespace>ExceptionReporting</RootNamespace>
+    <AssemblyName>ExceptionReporter.NET</AssemblyName>
+    <PackageId>ExceptionReporter</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
+    <ReleaseVersion>5.0</ReleaseVersion>
+	<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <PackageLicenseUrl>
+    </PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/PandaWood/ExceptionReporter.NET</PackageProjectUrl>
-	</PropertyGroup>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Properties\Resources.en.resx" />
     <EmbeddedResource Remove="Properties\Resources.ru.resx" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DotNetZip" Version="1.15.0" />
-    <PackageReference Include="Handlebars.Net" Version="1.9.0" />
-    <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
+    <PackageReference Include="Handlebars.Net" Version="2.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.en.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -29,18 +36,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <PropertyGroup>
     <Version>5.0</Version>
     <FileVersion>5.0.0.0</FileVersion>
     <Authors>Peter van der Woude, Simon Cropp</Authors>
     <Description>ExceptionReporter is a .NET UserControl/Dialog that gathers detailed information on an Exception and the application/system running it. It allows the user to copy, save or email a report to the developer</Description>
-    <Copyright></Copyright>
+    <Copyright>
+    </Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RepositoryUrl>https://github.com/PandaWood/ExceptionReporter.NET</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -53,8 +57,9 @@
 Dependencies Updated:
 - DotNetZip from 1.11 to 1.15
 - Simple-MAPI.NET 1.1 to 1.2</PackageReleaseNotes>
+    <OutputType>Library</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
-  <Import Project="..\ExceptionReporter.Shared\ExceptionReporter.Shared.projitems" Label="Shared" />
   <ItemGroup>
     <Compile Update="C:\code\ExceptionReporter.NET\ExceptionReporter.Shared\Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -75,7 +80,11 @@ Dependencies Updated:
   <ItemGroup>
     <None Include="..\..\LICENSE.txt">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>
+      </PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExceptionReporter.Shared\ExceptionReporter.Shared.csproj" />
   </ItemGroup>
 </Project>

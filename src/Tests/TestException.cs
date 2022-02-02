@@ -1,27 +1,27 @@
-﻿using System;
+using System;
 
-namespace Tests.ExceptionReporting
+namespace ExceptionReporting.Tests
 {
-	internal class TestException : Exception
-	{
-		public const string ErrorMessage = "NullRef";
+  internal class TestException : Exception
+  {
+	public const string ErrorMessage = "NullRef";
 
-		public TestException() : base(ErrorMessage)
-		{ }
-	}
-	
-	internal class TestContainsInnerException : Exception
-	{
-		public const string ErrorMessage = "OuterNullRef";
+	public TestException() : base(ErrorMessage)
+	{ }
+  }
 
-		public TestContainsInnerException() : base(ErrorMessage, new TestInnerException())
-		{ }
-	}
-	
-	internal class TestInnerException : Exception
-	{
-		public const string ErrorMessage = "InnerNullRef";
+  internal class TestContainsInnerException : Exception
+  {
+	public const string ErrorMessage = "OuterNullRef";
 
-		public TestInnerException() : base(ErrorMessage)		{ }
-	}
+	public TestContainsInnerException() : base(ErrorMessage, new TestInnerException())
+	{ }
+  }
+
+  internal class TestInnerException : Exception
+  {
+	public const string ErrorMessage = "InnerNullRef";
+
+	public TestInnerException() : base(ErrorMessage) { }
+  }
 }
