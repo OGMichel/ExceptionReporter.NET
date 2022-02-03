@@ -12,12 +12,12 @@ namespace ExceptionReporting.Network
   public class ReportPacket
   {
 	[DataMember]
-	public string AppName { get; set; } = "";
+	public string AppName { get; set; } = String.Empty;
 	[DataMember]
-	public string AppVersion { get; set; } = "";
+	public string AppVersion { get; set; } = String.Empty;
 	[DataMember]
-	public string ExceptionMessage { get; set; } = "";
+	public string ExceptionMessage { get; set; } = String.Empty;
 	[DataMember]
-	public string ExceptionReport { get; set; } = "";
+	public string ExceptionReport { get; set; } = String.Empty;
   }
 }

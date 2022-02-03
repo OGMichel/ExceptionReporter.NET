@@ -90,8 +90,8 @@ namespace Demo.WinForms
 	  config.SendMethod = ReportSendMethod.SMTP;        // obsolete deprecated property used here, will be removed in later version
 	  config.SmtpServer = "127.0.0.1";
 	  config.SmtpPort = 2500;
-	  config.SmtpUsername = "";
-	  config.SmtpPassword = "";
+	  config.SmtpUsername = String.Empty;
+	  config.SmtpPassword = String.Empty;
 	  config.SmtpFromAddress = "test@test.com";
 	  config.EmailReportAddress = "support@support.com";
 	  config.SmtpUseSsl = false;     // NB you'll need to have "Allow less secure apps: ON" if using Gmail for this

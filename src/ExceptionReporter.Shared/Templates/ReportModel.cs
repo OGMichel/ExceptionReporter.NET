@@ -15,13 +15,13 @@ namespace ExceptionReporting.Report
   {
 	public App App { get; set; }
 	public Error Error { get; set; }
-	public string SystemInfo { get; set; } = "";
+	public string SystemInfo { get; set; } = String.Empty;
   }
 
   public class App
   {
-	public string Name { get; set; } = "";
-	public string Version { get; set; } = "";
+	public string Name { get; set; } = String.Empty;
+	public string Version { get; set; } = String.Empty;
 	public string Region { get; set; } = CultureInfo.CurrentCulture.DisplayName;
 
 	/// <summary> eg used in HTML lang attribute </summary>
@@ -31,7 +31,7 @@ namespace ExceptionReporting.Report
 	public string Title { get; set; } = "Exception Report";
 
 	/// <summary> optional - will not show field at all if empty </summary>
-	public string User { get; set; } = "";
+	public string User { get; set; } = String.Empty;
 
 	public IEnumerable<AssemblyRef> AssemblyRefs { get; set; }
   }
@@ -44,10 +44,10 @@ namespace ExceptionReporting.Report
 	public DateTime When { get; set; } = DateTime.Now;
 
 	/// <summary> Full stack trace string, including any and all inner exceptions and/or multiple exceptions </summary>
-	public string FullStackTrace { get; set; } = "";
+	public string FullStackTrace { get; set; } = String.Empty;
 
 	/// <summary> Optional - user input </summary>
-	public string Explanation { get; set; } = "";
+	public string Explanation { get; set; } = String.Empty;
 
 	/// <summary> an ID to uniquely identify this particular report (defaults to a generated GUID) </summary>
 	public string ID { get; set; } = Guid.NewGuid().ToString();
@@ -65,7 +65,7 @@ namespace ExceptionReporting.Report
 
   public class AssemblyRef
   {
-	public string Name { get; set; } = "";
-	public string Version { get; set; } = "";
+	public string Name { get; set; } = String.Empty;
+	public string Version { get; set; } = String.Empty;
   }
 }

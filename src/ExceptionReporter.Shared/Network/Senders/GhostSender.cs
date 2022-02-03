@@ -7,7 +7,7 @@
 	  // do nothing
 	}
 
-	public string Description { get; } = "";
-	public string ConnectingMessage { get; } = "";
+	public string Description { get; } = String.Empty;
+	public string ConnectingMessage { get; } = String.Empty;
   }
 }

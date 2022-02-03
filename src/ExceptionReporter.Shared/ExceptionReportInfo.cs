@@ -60,12 +60,12 @@ namespace ExceptionReporting
 	/// ie a custom message to show in place of the Exception Message
 	/// NB this can also be set in the 1st parameter of <see cref="ExceptionReporter.Show(string, Exception[])"/>
 	/// </summary>
-	public string CustomMessage { get; set; } = "";
+	public string CustomMessage { get; set; } = String.Empty;
 
-	public string SmtpUsername { get; set; } = "";
-	public string SmtpPassword { get; set; } = "";
-	public string SmtpFromAddress { get; set; } = "";
-	public string SmtpServer { get; set; } = "";
+	public string SmtpUsername { get; set; } = String.Empty;
+	public string SmtpPassword { get; set; } = String.Empty;
+	public string SmtpFromAddress { get; set; } = String.Empty;
+	public string SmtpServer { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Uses default port if not set (ie 25)
@@ -90,25 +90,25 @@ namespace ExceptionReporting
 	/// <summary>
 	/// The name of the application calling the exception report
 	/// </summary>
-	public string AppName { get; set; } = "";
+	public string AppName { get; set; } = String.Empty;
 
 	/// <summary>
 	/// The version of the application calling the exception report
 	/// set automatically by <see cref="ReportGenerator"/> from either the assembly or ApplicationDeployment
 	/// if deployed using ClickOnce
 	/// </summary>
-	public string AppVersion { get; set; } = "";
+	public string AppVersion { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Region information - set automatically by <see cref="ReportGenerator"/>
 	/// </summary>
-	public string RegionInfo { get; set; } = "";
+	public string RegionInfo { get; set; } = String.Empty;
 
 	/// <summary>
 	/// User Name shown in a report.
 	/// If this value is empty, the value and any label/field will be hidden 
 	/// </summary>
-	public string UserName { get; set; } = "";
+	public string UserName { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Date/time of the exception being raised - will be set automatically by <see cref="ReportGenerator"/>
@@ -126,7 +126,7 @@ namespace ExceptionReporting
 	/// The text filled in by the user of the Exception Reporter dialog, to explain the error
 	/// If this value is empty, the value and any label/field will be hidden
 	/// </summary>
-	public string UserExplanation { get; set; } = "";
+	public string UserExplanation { get; set; } = String.Empty;
 
 	/// <summary>
 	/// The calling assembly of the running application
@@ -140,7 +140,7 @@ namespace ExceptionReporting
 	/// The company/owner of the running application.
 	/// Used in the dialog label that reads "...please contact {0} support" and the Email button "Email {0}"
 	/// </summary>
-	public string CompanyName { get; set; } = "";
+	public string CompanyName { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Show/hide *General* tab in dialog
@@ -170,20 +170,20 @@ namespace ExceptionReporting
 	/// Appears in the 'to:' field in the default email client if
 	/// <see cref="SendMethod"/> is <see cref="ReportSendMethod.MailClient"/>
 	/// </summary>
-	public string EmailReportAddress { get; set; } = "";
+	public string EmailReportAddress { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Email object
 	/// Appears in the 'subject:' field in the default email client if
 	/// <see cref="SendMethod"/> is <see cref="ReportSendMethod.MailClient"/>
 	/// </summary>
-	public string EmailReportSubject { get; set; } = "";
+	public string EmailReportSubject { get; set; } = String.Empty;
 
 	/// <summary>
 	/// The URL to be used to submit the exception report to a RESTful WebService
 	/// Requires <see cref="SendMethod"/> is set to <see cref="ReportSendMethod.WebService"/>
 	/// </summary>
-	public string WebServiceUrl { get; set; } = "";
+	public string WebServiceUrl { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Timeout (in seconds) for the WebService
@@ -204,7 +204,7 @@ namespace ExceptionReporting
 		/// <summary>
 		/// The title of the main ExceptionReporter dialog
 		/// </summary>
-	public string TitleText { get; set; } = "";
+	public string TitleText { get; set; } = String.Empty;
 
 	/// <summary>
 	/// Background color of the dialog
@@ -253,10 +253,10 @@ namespace ExceptionReporting
 	/// <summary>
 	/// The text to show in the label that prompts the user to input any relevant message
 	/// </summary>
-	public string UserExplanationLabel { get; set; } = "";
+	public string UserExplanationLabel { get; set; } = String.Empty;
 
 	[Obsolete("Not actually used anywhere")]
-	public string ContactMessageTop { get; set; } = "";
+	public string ContactMessageTop { get; set; } = String.Empty;
 
 	/// <summary> 
 	/// Show buttons in the "flat" (non 3D) style
@@ -292,7 +292,7 @@ namespace ExceptionReporting
 	/// A populated model will be passed to the template <see cref="ReportModel"/>
 	/// See Templates/ReportTemplate.text for example 
 	/// </summary>
-	public string ReportCustomTemplate { get; set; } = "";
+	public string ReportCustomTemplate { get; set; } = String.Empty;
 
 	/// <summary>
 	/// convenience method
