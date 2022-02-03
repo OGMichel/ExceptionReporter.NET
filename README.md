@@ -46,7 +46,7 @@ You can even format your own report using [Report Templates](https://github.com/
 - Send a report using various methods:
   - RESTful API/WebService
   - to Email address via SMTP 
-  - to Email address via installed client (SimpleMAPI)
+  - to Email address via installed client (mailto command)
  - Emailing includes support for automatically attaching files and compressing 
  into a single zip file - useful for including log files and configuration files to help with troubleshooting
 - The report sent to the developer can be in various formats (v4):
@@ -129,7 +129,7 @@ Operating System
 ```
 
 ## Build 
-ExceptionReporter has a dependency on the [.NET4 Framework](https://en.wikipedia.org/wiki/.NET_Framework_version_history#.NET_Framework_4) - so can go as low as supporting Windows XP
+ExceptionReporter has a dependency on the [.NET6 Framework](https://en.wikipedia.org/wiki/.NET#History) - so can go as low as supporting Windows 7 SP1
 
 *ExceptionReporter.NET.sln* - this uses [the new csproj format](https://docs.microsoft.com/en-us/dotnet/core/tools/csproj) that was introduced in .NET Core but is backward compatible for .NET projects (like this).
 
