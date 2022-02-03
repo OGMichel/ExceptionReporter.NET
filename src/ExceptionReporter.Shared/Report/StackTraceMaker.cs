@@ -1,65 +1,65 @@
-﻿using System.Text;
+using System.Text;
 
 namespace ExceptionReporting.Report
 {
-  internal interface IStackTraceMaker
-  {
-	string FullStackTrace();
-  }
-
-  internal class StackTraceMaker : IStackTraceMaker
-  {
-	private readonly IList<Exception> _exceptions;
-
-	public StackTraceMaker(params Exception[] exceptions)
+	internal interface IStackTraceMaker
 	{
-	  _exceptions = exceptions;
+		string FullStackTrace();
 	}
 
-	public string FullStackTrace()
+	internal class StackTraceMaker : IStackTraceMaker
 	{
-	  var sb = new StringBuilder();
+		private readonly IList<Exception> _exceptions;
 
-	  foreach (var exception in _exceptions)
-	  {
-		sb.AppendLine(this.StackTrace(exception));
-	  }
-
-	  return sb.ToString();
-	}
-
-	/// <summary>
-	/// Create a line-delimited string of the exception hierarchy 
-	/// //TODO see Label='EH' in View, which is partly duplicated
-	/// </summary>
-	private string StackTrace(Exception exception)
-	{
-	  var currentException = exception;
-	  var stringBuilder = new StringBuilder();
-	  var count = 0;
-
-	  while (currentException != null)
-	  {
-		if (count++ == 0)
-		  stringBuilder.AppendLine("Top-level Exception");
-		else
-		  stringBuilder.AppendLine("Inner Exception " + (count - 1));
-
-		stringBuilder
-			.AppendLine("Type:    " + currentException.GetType())
-			.AppendLine("Message: " + currentException.Message)
-			.AppendLine("Source:  " + currentException.Source);
-
-		if (currentException.StackTrace != null)
+		public StackTraceMaker(params Exception[] exceptions)
 		{
-		  stringBuilder.AppendLine("Stack Trace: " + currentException.StackTrace.Trim());
+			_exceptions = exceptions;
 		}
 
-		currentException = currentException.InnerException;
-	  }
+		public string FullStackTrace()
+		{
+			var sb = new StringBuilder();
 
-	  var exceptionString = stringBuilder.ToString();
-	  return exceptionString.TrimEnd();
+			foreach (var exception in _exceptions)
+			{
+				sb.AppendLine(this.StackTrace(exception));
+			}
+
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Create a line-delimited string of the exception hierarchy 
+		/// //TODO see Label='EH' in View, which is partly duplicated
+		/// </summary>
+		private string StackTrace(Exception exception)
+		{
+			var currentException = exception;
+			var stringBuilder = new StringBuilder();
+			var count = 0;
+
+			while (currentException != null)
+			{
+				if (count++ == 0)
+					stringBuilder.AppendLine("Top-level Exception");
+				else
+					stringBuilder.AppendLine("Inner Exception " + (count - 1));
+
+				stringBuilder
+					.AppendLine("Type:    " + currentException.GetType())
+					.AppendLine("Message: " + currentException.Message)
+					.AppendLine("Source:  " + currentException.Source);
+
+				if (currentException.StackTrace != null)
+				{
+					stringBuilder.AppendLine("Stack Trace: " + currentException.StackTrace.Trim());
+				}
+
+				currentException = currentException.InnerException;
+			}
+
+			var exceptionString = stringBuilder.ToString();
+			return exceptionString.TrimEnd();
+		}
 	}
-  }
 }

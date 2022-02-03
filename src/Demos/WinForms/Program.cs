@@ -1,20 +1,20 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace Demo.WinForms
 {
-  public static class Program
-  {
-	/// <summary>
-	/// The main entry point for the application.
-	/// </summary>
-	[STAThread]
-	public static void Main()
+	public static class Program
 	{
-	  Application.EnableVisualStyles();
-	  Application.SetHighDpiMode(HighDpiMode.SystemAware);
-	  Application.SetCompatibleTextRenderingDefault(false);
-	  Application.Run(new DemoApp());
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		public static void Main()
+		{
+			Application.EnableVisualStyles();
+			Application.SetHighDpiMode(HighDpiMode.SystemAware);
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new DemoApp());
+		}
 	}
-  }
 }

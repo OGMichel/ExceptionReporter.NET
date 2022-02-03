@@ -1,23 +1,23 @@
-﻿namespace ExceptionReporting.Network
+namespace ExceptionReporting.Network
 {
-  /// <summary>
-  /// One who sends reports - generally separated by communication method
-  /// </summary>
-  public interface IReportSender
-  {
 	/// <summary>
-	/// Send the report using implementation destination
+	/// One who sends reports - generally separated by communication method
 	/// </summary>
-	void Send(string report);
+	public interface IReportSender
+	{
+		/// <summary>
+		/// Send the report using implementation destination
+		/// </summary>
+		void Send(string report);
 
-	/// <summary>
-	/// One-word description of the sender type
-	/// </summary>
-	string Description { get; }
+		/// <summary>
+		/// One-word description of the sender type
+		/// </summary>
+		string Description { get; }
 
-	/// <summary>
-	/// Message to describe connection impending
-	/// </summary>
-	string ConnectingMessage { get; }
-  }
+		/// <summary>
+		/// Message to describe connection impending
+		/// </summary>
+		string ConnectingMessage { get; }
+	}
 }

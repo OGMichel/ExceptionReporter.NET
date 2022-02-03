@@ -2,50 +2,50 @@ using System.Text;
 
 namespace ExceptionReporting.SystemInfo
 {
-  internal interface ISysInfoResultMapper
-  {
-	string SysInfoString();
-  }
-
-  ///<summary>
-  /// Map SysInfoResults to human-readable format
-  ///</summary>
-  public class SysInfoResultMapper : ISysInfoResultMapper
-  {
-	private readonly IEnumerable<SysInfoResult> _sysInfoResults;
-
-	protected SysInfoResultMapper()
-	{ }
-
-	public SysInfoResultMapper(IEnumerable<SysInfoResult> sysInfoResults)
+	internal interface ISysInfoResultMapper
 	{
-	  _sysInfoResults = sysInfoResults;
+		string SysInfoString();
 	}
 
-	/// <summary>
-	/// create a string representation of a list of SysInfoResults, customised specifically (eg 2-level deep)
-	/// </summary>
-	public string SysInfoString()
+	///<summary>
+	/// Map SysInfoResults to human-readable format
+	///</summary>
+	public class SysInfoResultMapper : ISysInfoResultMapper
 	{
-	  var sb = new StringBuilder();
+		private readonly IEnumerable<SysInfoResult> _sysInfoResults;
 
-	  foreach (var result in _sysInfoResults)
-	  {
-		sb.AppendLine(result.Name);
+		protected SysInfoResultMapper()
+		{ }
 
-		foreach (var nodeValueParent in result.Nodes)
+		public SysInfoResultMapper(IEnumerable<SysInfoResult> sysInfoResults)
 		{
-		  sb.AppendLine("-" + nodeValueParent);
-
-		  foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult.Nodes))
-		  {
-			sb.AppendLine("--" + nodeValue);        // the max no. of levels is 2, ie '--' is as deep as we go
-		  }
+			_sysInfoResults = sysInfoResults;
 		}
-		sb.AppendLine();
-	  }
 
-	  return sb.ToString();
+		/// <summary>
+		/// create a string representation of a list of SysInfoResults, customised specifically (eg 2-level deep)
+		/// </summary>
+		public string SysInfoString()
+		{
+			var sb = new StringBuilder();
+
+			foreach (var result in _sysInfoResults)
+			{
+				sb.AppendLine(result.Name);
+
+				foreach (var nodeValueParent in result.Nodes)
+				{
+					sb.AppendLine("-" + nodeValueParent);
+
+					foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult.Nodes))
+					{
+						sb.AppendLine("--" + nodeValue);        // the max no. of levels is 2, ie '--' is as deep as we go
+					}
+				}
+				sb.AppendLine();
+			}
+
+			return sb.ToString();
+		}
 	}
-  }
 }

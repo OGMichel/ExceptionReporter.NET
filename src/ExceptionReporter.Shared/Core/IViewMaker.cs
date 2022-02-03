@@ -5,15 +5,15 @@ using ExceptionReporting.Core;
 /// </summary>
 public interface IViewMaker
 {
-  /// <summary>
-  /// create the main view/dialog
-  /// </summary>
-  /// <returns><see cref="IExceptionReportView"/></returns>
-  IExceptionReportView Create();
+	/// <summary>
+	/// create the main view/dialog
+	/// </summary>
+	/// <returns><see cref="IExceptionReportView"/></returns>
+	IExceptionReportView Create();
 
-  /// <summary>
-  /// show an error 
-  /// </summary>
-  /// <param name="message"></param>
-  void ShowError(string message);
+	/// <summary>
+	/// show an error 
+	/// </summary>
+	/// <param name="message"></param>
+	void ShowError(string message);
 }

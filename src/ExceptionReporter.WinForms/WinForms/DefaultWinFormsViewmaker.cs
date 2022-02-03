@@ -8,26 +8,26 @@ using System.Windows.Forms;
 
 namespace ExceptionReporting.WinForms
 {
-  /// <summary>
-  /// Default/WinForms implementation of IViewmaker 
-  /// </summary>
-  internal class DefaultWinFormsViewmaker : IViewMaker
-  {
-	private readonly ExceptionReportInfo _reportInfo;
-
-	public DefaultWinFormsViewmaker(ExceptionReportInfo reportInfo)
+	/// <summary>
+	/// Default/WinForms implementation of IViewmaker 
+	/// </summary>
+	internal class DefaultWinFormsViewmaker : IViewMaker
 	{
-	  _reportInfo = reportInfo;
-	}
+		private readonly ExceptionReportInfo _reportInfo;
 
-	public IExceptionReportView Create()
-	{
-	  return new ExceptionReportView(_reportInfo);
-	}
+		public DefaultWinFormsViewmaker(ExceptionReportInfo reportInfo)
+		{
+			_reportInfo = reportInfo;
+		}
 
-	public void ShowError(string message)
-	{
-	  MessageBox.Show(message, Resources.Failed_trying_to_report_an_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		public IExceptionReportView Create()
+		{
+			return new ExceptionReportView(_reportInfo);
+		}
+
+		public void ShowError(string message)
+		{
+			MessageBox.Show(message, Resources.Failed_trying_to_report_an_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
 	}
-  }
 }

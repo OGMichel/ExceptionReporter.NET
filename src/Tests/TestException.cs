@@ -2,26 +2,26 @@ using System;
 
 namespace ExceptionReporting.Tests
 {
-  internal class TestException : Exception
-  {
-	public const string ErrorMessage = "NullRef";
+	internal class TestException : Exception
+	{
+		public const string ErrorMessage = "NullRef";
 
-	public TestException() : base(ErrorMessage)
-	{ }
-  }
+		public TestException() : base(ErrorMessage)
+		{ }
+	}
 
-  internal class TestContainsInnerException : Exception
-  {
-	public const string ErrorMessage = "OuterNullRef";
+	internal class TestContainsInnerException : Exception
+	{
+		public const string ErrorMessage = "OuterNullRef";
 
-	public TestContainsInnerException() : base(ErrorMessage, new TestInnerException())
-	{ }
-  }
+		public TestContainsInnerException() : base(ErrorMessage, new TestInnerException())
+		{ }
+	}
 
-  internal class TestInnerException : Exception
-  {
-	public const string ErrorMessage = "InnerNullRef";
+	internal class TestInnerException : Exception
+	{
+		public const string ErrorMessage = "InnerNullRef";
 
-	public TestInnerException() : base(ErrorMessage) { }
-  }
+		public TestInnerException() : base(ErrorMessage) { }
+	}
 }

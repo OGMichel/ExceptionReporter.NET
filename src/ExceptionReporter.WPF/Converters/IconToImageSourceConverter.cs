@@ -11,26 +11,26 @@ using System.Windows.Media.Imaging;
 // ReSharper disable once CheckNamespace
 namespace ExceptionReporting.WPF.Converters
 {
-  public class IconToImageSourceConverter : IValueConverter
-  {
-	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	public class IconToImageSourceConverter : IValueConverter
 	{
-	  if (value is not Icon icon)
-	  {
-		Trace.TraceWarning("Attempted to convert {0} instead of Icon object in IconToImageSourceConverter", value);
-		return null;
-	  }
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (value is not Icon icon)
+			{
+				Trace.TraceWarning("Attempted to convert {0} instead of Icon object in IconToImageSourceConverter", value);
+				return null;
+			}
 
-	  ImageSource imageSource = Imaging.CreateBitmapSourceFromHIcon(
-		  icon.Handle,
-		  Int32Rect.Empty,
-		  BitmapSizeOptions.FromEmptyOptions());
-	  return imageSource;
-	}
+			ImageSource imageSource = Imaging.CreateBitmapSourceFromHIcon(
+				icon.Handle,
+				Int32Rect.Empty,
+				BitmapSizeOptions.FromEmptyOptions());
+			return imageSource;
+		}
 
-	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-	{
-	  throw new NotImplementedException();
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
 	}
-  }
 }

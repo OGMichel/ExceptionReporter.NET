@@ -10,74 +10,74 @@ using System.Reflection;
 
 namespace ExceptionReporting.Report
 {
-  /// <summary>
-  /// ReportGenerator is the entry point to use 'ExceptionReporter.NET' to retrieve the report/data only.
-  /// ie if the user only requires the report info but has no need to use the show or send functionality available
-  /// </summary>
-  public class ReportGenerator
-  {
-	private readonly ExceptionReportInfo _info;
-	private readonly List<SysInfoResult> _sysInfoResults = new();
-
 	/// <summary>
-	/// Initialises some ExceptionReportInfo properties related to the application/system
+	/// ReportGenerator is the entry point to use 'ExceptionReporter.NET' to retrieve the report/data only.
+	/// ie if the user only requires the report info but has no need to use the show or send functionality available
 	/// </summary>
-	/// <param name="reportInfo">an ExceptionReportInfo, can be pre-populated with config
-	/// however 'base' properties such as MachineName</param>
-	public ReportGenerator(ExceptionReportInfo reportInfo)
+	public class ReportGenerator
 	{
-	  // this is going to be a dev/learning mistake - fail fast and hard
-	  _info = reportInfo ?? throw new ArgumentNullException(nameof(reportInfo));
-	  if (_info.AppAssembly == null)
-	  {
-		_info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
-	  }
+		private readonly ExceptionReportInfo _info;
+		private readonly List<SysInfoResult> _sysInfoResults = new();
 
-	  _info.AppName = _info.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name ?? _info.AppName : _info.AppName;
-	  _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
-	  _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
-	}
+		/// <summary>
+		/// Initialises some ExceptionReportInfo properties related to the application/system
+		/// </summary>
+		/// <param name="reportInfo">an ExceptionReportInfo, can be pre-populated with config
+		/// however 'base' properties such as MachineName</param>
+		public ReportGenerator(ExceptionReportInfo reportInfo)
+		{
+			// this is going to be a dev/learning mistake - fail fast and hard
+			_info = reportInfo ?? throw new ArgumentNullException(nameof(reportInfo));
+			if (_info.AppAssembly == null)
+			{
+				_info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
+			}
 
-	private string GetAppVersion()
-	{
-	  return _info.AppAssembly.GetName().Version?.ToString() ?? "";
-	}
+			_info.AppName = _info.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name ?? _info.AppName : _info.AppName;
+			_info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
+			_info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
+		}
 
-	/// <summary>
-	/// Generate the exception report
-	/// </summary>
-	/// <remarks>
-	/// Generate doesn't do a lot beside feed the builder - this is just to keep the builder free of
-	/// too many concrete (system-reliant) dependencies
-	/// </remarks>
-	/// <returns><see cref="ReportModel"/>object</returns>
-	public string Generate()
-	{
-	  var sysInfoResults = GetOrFetchSysInfoResults();
+		private string GetAppVersion()
+		{
+			return _info.AppAssembly.GetName().Version?.ToString() ?? "";
+		}
 
-	  var build = new ReportBuilder(_info,
-		  new AssemblyDigger(_info.AppAssembly),
-		  new StackTraceMaker(_info.Exceptions),
-		  new SysInfoResultMapper(sysInfoResults));
+		/// <summary>
+		/// Generate the exception report
+		/// </summary>
+		/// <remarks>
+		/// Generate doesn't do a lot beside feed the builder - this is just to keep the builder free of
+		/// too many concrete (system-reliant) dependencies
+		/// </remarks>
+		/// <returns><see cref="ReportModel"/>object</returns>
+		public string Generate()
+		{
+			var sysInfoResults = GetOrFetchSysInfoResults();
 
-	  return build.Report();
-	}
+			var build = new ReportBuilder(_info,
+				new AssemblyDigger(_info.AppAssembly),
+				new StackTraceMaker(_info.Exceptions),
+				new SysInfoResultMapper(sysInfoResults));
 
-	/// <summary>
-	/// get system information and memoize
-	/// </summary>
-	public IEnumerable<SysInfoResult> GetOrFetchSysInfoResults()
-	{
-	  if (_sysInfoResults.Count == 0)
-		_sysInfoResults.AddRange(CreateSysInfoResults());
+			return build.Report();
+		}
 
-	  return _sysInfoResults.AsReadOnly();
-	}
+		/// <summary>
+		/// get system information and memoize
+		/// </summary>
+		public IEnumerable<SysInfoResult> GetOrFetchSysInfoResults()
+		{
+			if (_sysInfoResults.Count == 0)
+				_sysInfoResults.AddRange(CreateSysInfoResults());
 
-	private static IEnumerable<SysInfoResult> CreateSysInfoResults()
-	{
-	  var retriever = new SysInfoRetriever();
-	  var results = new List<SysInfoResult>
+			return _sysInfoResults.AsReadOnly();
+		}
+
+		private static IEnumerable<SysInfoResult> CreateSysInfoResults()
+		{
+			var retriever = new SysInfoRetriever();
+			var results = new List<SysInfoResult>
 			{
 				retriever.Retrieve(SysInfoQueries.OperatingSystem).Filter(
 					new[]
@@ -97,7 +97,7 @@ namespace ExceptionReporting.Report
 						"Model"
 					})
 			};
-	  return results;
+			return results;
+		}
 	}
-  }
 }
