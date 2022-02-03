@@ -32,7 +32,7 @@ namespace ExceptionReporting.SystemInfo
 
 	private IEnumerable<SysInfoResult> GetChildren(ManagementBaseObject managementObject)
 	{
-	  SysInfoResult childResult = null;
+	  SysInfoResult? childResult = null;
 	  ICollection<SysInfoResult> childList = new List<SysInfoResult>();
 
 	  foreach (var propertyData in managementObject.Properties)

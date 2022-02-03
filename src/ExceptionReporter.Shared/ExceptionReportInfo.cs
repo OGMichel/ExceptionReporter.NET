@@ -201,10 +201,10 @@ namespace ExceptionReporting
 	  set => _showEmailButton = value;
 	}
 
-	/// <summary>
-	/// The title of the main ExceptionReporter dialog
-	/// </summary>
-	public string TitleText { get; set; }
+		/// <summary>
+		/// The title of the main ExceptionReporter dialog
+		/// </summary>
+	public string TitleText { get; set; } = "";
 
 	/// <summary>
 	/// Background color of the dialog

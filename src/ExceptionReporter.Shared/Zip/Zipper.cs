@@ -11,10 +11,14 @@ namespace ExceptionReporting.Zip
   {
 	public void Zip(string zipFile, IEnumerable<string> files)
 	{
-	  Stream fileStream = new FileStream(zipFile, FileMode.Create);
-	  ZipArchive archive = new(fileStream);
-	  foreach (string file in files)
-		archive.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
+	  using (Stream zipFileStream = new FileStream(zipFile, FileMode.Create))
+	  {
+		using (ZipArchive archive = new ZipArchive(zipFileStream, ZipArchiveMode.Create))
+		{
+		  foreach (string file in files)
+			archive.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Fastest);
+		}
+	  }
 	}
   }
 }
