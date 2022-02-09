@@ -149,9 +149,9 @@ namespace ExceptionReporting.Tests
 			});
 
 			var result = renderer.RenderCustom(@"
-Custom App: {{App.Name}}
-Custom Version: {{App.Version}}
-");
+				Custom App: {{App.Name}}
+				Custom Version: {{App.Version}}
+				");
 			Assert.That(result, Does.Contain($"Custom App: {"Appy"}"));
 			Assert.That(result, Does.Contain($"Custom Version: {"v1.0"}"));
 		}

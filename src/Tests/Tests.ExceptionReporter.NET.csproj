@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExceptionReporter.Shared\ExceptionReporter.Shared.csproj" />
+    <ProjectReference Include="..\ExceptionReporter.WinForms\ExceptionReporter.WinForms.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Management" />

@@ -13,7 +13,8 @@ namespace ExceptionReporting.Tests
 			var digger = new AssemblyDigger(Assembly.Load("ExceptionReporter.NET"));
 			var refs = digger.GetAssemblyRefs().ToList();
 
-			Assert.That(refs.Select(r => r.Name), Is.SupersetOf(new[] { "System.Core", "DotNetZip", "SimpleMapi.NET" }));
+			Assert.That(refs.Select(r => r.Name), Is.SupersetOf(new[] { "ExceptionReporter.NET",
+				"ExceptionReporter.Shared", "System.Runtime" }));
 		}
 
 		[Test]
